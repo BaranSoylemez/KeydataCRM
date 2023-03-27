@@ -1,0 +1,35 @@
+﻿@using EntityLayer.Concrete
+@using System.Collections.Generic
+@model IEnumerable<Project>
+@{
+    ViewData["Title"] = "UserProject";
+    Layout = "~/Views/Shared/_KeydataLayout.cshtml";
+
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+}
+
+<h1>Kullanıcının Satışları</h1>
+
+<br />
+<table class="table table-bordered">
+    <tr>
+        <th>ID</th>
+        <th>PROJE ADI</th>
+        <th>AÇIKLAMA</th>
+        <th>TUTAR</th>
+        <th>MÜŞTERİ</th>
+        <th>TAKİP EDEN</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.ProjectID</td>
+            <td>@item.ProjectName</td>
+            <td>@item.ProjectDesc</td>
+            <td>@item.Quote.QuotePrice @item.Quote.QuoteCurrency</td>
+            <td>@item.Client.ClientName</td>
+            <td>@item.User.UserName @item.User.UserSurname</td>
+            
+        </tr>
+    }
+</table>
